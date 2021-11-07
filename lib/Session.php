@@ -21,6 +21,16 @@
            }
     }
 
+    public function checkLogin()
+    {
+
+        self::init();
+        if(self::get("adminlogin") ==true){
+            header("LOcation::login.php");
+        }
+
+    }
+
 
     public function destroy()
     {

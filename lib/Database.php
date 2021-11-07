@@ -49,10 +49,10 @@ public $dbname = DB_NAME;
    public function insert($query){
    $insert_row = $this->link->query($query) or die ($this->link->error.__LINE__);
    if($insert_row){
-   	header("Location: index.php?msg=".urlencode('Data inserted Successfully'));
+    return $insert_row;
    	exit();
    	   } else {
-   	   	die("Error: (".$this->link->erron.")".$this->link->error);
+        return false;
 
    	   }
 
@@ -63,10 +63,10 @@ public $dbname = DB_NAME;
    public function update($query){
    $update_row = $this->link->query($query) or die ($this->link->error.__LINE__);
    if($update_row){
-   	header("Location: index.php?msg=".urlencode('Data Updated Successfully'));
+    return $update_row;
    	exit();
    	   } else {
-   	   	die("Error: (".$this->link->erron.")".$this->link->error);
+        return false;
 
    	   }
 
@@ -80,10 +80,10 @@ public $dbname = DB_NAME;
    public function delete($query){
    $delete_row = $this->link->query($query) or die ($this->link->error.__LINE__);
    if($delete_row){
-   	header("Location: index.php?msg=".urlencode('Data Delete Successfully'));
+    return $delete_row;
    	exit();
    	   } else {
-   	   	die("Error: (".$this->link->erron.")".$this->link->error);
+   	   	return false;
 
    	   }
 
