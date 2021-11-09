@@ -21,18 +21,29 @@
            }
     }
 
-    public function checkLogin()
+    public static function checkSession()
+    {
+
+       self::init();
+       if(self::get("adminlogin") == false){
+         self::destroy();
+         header("Location::login.php");
+       }
+
+    }
+
+    public static function checkLogin()
     {
 
         self::init();
         if(self::get("adminlogin") ==true){
-            header("LOcation::login.php");
+            header("Location::login.php");
         }
 
     }
 
 
-    public function destroy()
+    public static function destroy()
     {
 
         session_destroy();

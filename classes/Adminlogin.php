@@ -32,18 +32,25 @@ class Adminlogin
             $loginmsg = "Username and Password can not be empty ;
             return $loginmsg;
         }else{
-            $query="SELECT * from tbl_admin WHERE adminUser='$adminUser' AND adminPass='$adminPass' ";
-            $result = $this->db->select($query);
-            if($result is false){
-                $value=$result->fetch_assoc();
-                Session::set("adminLogin", true);
-                Session::set("adminId", $value['adminId']);
-                Session::set("adminUser", $value['adminUser']);
-                Session::set("adminName", $value['adminName']);
-                header
-        }
-        
+
+    		$query = "SELECT * FROM tbl_admin WHERE adminUser='$adminUser' AND adminPass='$adminPass' ";
+    		$result = $this->db->select($query);
+    		if ($result != false) {
+    			$value = $result->fetch_assoc();
+    			Session::set("adminlogin", true);
+    			Session::set("adminId", $value['adminId']);
+    			Session::set("adminUser", $value['adminUser']);
+    			Session::set("adminName", $value['adminName']);
+    			header("Location:dashbord.php");
+    		}else {
+    			$loginmsg = "username or password not match ";
+    			return $loginmsg;
+    		}
+    	}
+
     }
+
+
 }
 
 
