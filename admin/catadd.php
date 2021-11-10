@@ -1,14 +1,40 @@
 ﻿<?php include 'inc/header.php';?>
 <?php include 'inc/sidebar.php';?>
-        <div class="grid_10">
+<?php include 'inc/Category.php';?>
+
+
+<?php
+
+     $cat = new Category();
+     if($_SERVER['REQUST_METHOD'] =='POST'){
+        $catName = $_POST['catName'];
+      
+ 
+        $insertCat = $cat->catInsert($catName);
+     }
+?>
+        
+
+
+
+   <div class="grid_10">
             <div class="box round first grid">
                 <h2>Add New Category</h2>
                <div class="block copyblock"> 
-                 <form>
+
+                 <?php
+
+                      if(isset($insertCat)){
+                          echo $insertCat;
+                      }
+
+                  ?>
+
+                 <form action="" method="post" >
                     <table class="form">					
                         <tr>
                             <td>
-                                <input type="text" placeholder="Enter Category Name..." class="medium" />
+                                <input type="text" name="catName" placeholder="Enter Category Name..." class="medium" />
                             </td>
                         </tr>
 						<tr> 
@@ -21,4 +47,5 @@
                 </div>
             </div>
         </div>
-<?php include 'inc/footer.php';?>
+
+        <?php include 'inc/footer.php';?>
