@@ -35,15 +35,32 @@ class Category
                 $msg="<span class= 'succces'>Caegory inserted Successufully. </span>"
                 return $msg;
              }else{
-                 $msg="<span class= 'succces'>Caegory Not inserted Successufully. </span>"
+                 $msg="<span class ='error'>Caegory Not inserted Successufully. </span>"
                  return $msg;
              }
 
 
 
+    }
+    
+     Public function getAllCat()
+     {
+
+             $query="SELECT * FROM tbl_category ORDER BY catID DESC";
+             $result = $this->db->select($query);
+             return $result; 
+          
      }
 
-          
-    }
+
+     Public function getByID($id)
+     {
+
+        $query="SELECT * FROM tbl_category WHERE catId="$id";
+        $result = $this->db->select($query);
+        return $result;
+
+
+     }
 
           ?>
