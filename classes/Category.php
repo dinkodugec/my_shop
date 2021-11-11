@@ -81,10 +81,10 @@ class Category
         $update_row = $this->db->updare($query);
         if(update_row){
           $msg="<span class ='error'>Caegory Update Successufully. </span>";
-            return $msg;
+                 return $msg;
         }else{
           $msg="<span class ='error'>Caegory Not Updated. </span>";
-          return $msg;
+                 return $msg;
         }
 
 
@@ -93,5 +93,21 @@ class Category
      }
 
 
+
+      public function delCatById()
+      {
+        $query="DELETE FROM tbl_category WHERE catId = '$id'";
+        $delData = $this->db->delete($query);
+        if($delData){
+          $msg="<span class ='error'>Category Deleted Successufully. </span>";
+                   return $msg;
+      } else{
+        $msg="<span class ='error'>Category Not Deleted . </span>";
+                   return $msg;
     }
-          ?>
+         
+    
+    
+  }
+    
+    ?>
