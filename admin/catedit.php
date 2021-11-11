@@ -23,7 +23,7 @@
         $catName = $_POST['catName'];
       
  
-        $insertCat = $cat->catInsert($catName);
+        $updateCat = $cat->catUpdate($catName,$id);
      }
 ?>
         
@@ -37,8 +37,8 @@
 
                  <?php
 
-                      if(isset($insertCat)){
-                          echo $insertCat;
+                      if(isset($updateCat)){
+                          echo $updateCat;
                       }
 
                   ?>
