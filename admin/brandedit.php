@@ -1,12 +1,12 @@
 <?php include 'inc/header.php';?>
 <?php include 'inc/sidebar.php';?>
-<?php include '../classes/Category.php';  ?>
+<?php include '../classes/Brand.php';  ?>
 
  <?php
-  if (!isset($_GET['catid'])  || $_GET['catid'] == NULL ) {
+  if (!isset($_GET['brandid'])  || $_GET['brandid'] == NULL ) {
      echo "<script>window.location = 'catlist.php';  </script>";
   }else {
-    $id = $_GET['catid'];
+    $id = $_GET['brandid'];
 
   }
 
@@ -15,11 +15,11 @@
 
 
 <?php 
-   $cat =  new Category();
+   $brand =  new Brand();
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $catName = $_POST['catName'];
+        $brandName = $_POST['brandName'];
         
-        $updateCat = $cat->catUpdate($catName, $id);
+        $updateBrand = $brand->brandUpdate($brandName, $id);
     }
 
 ?>
@@ -32,17 +32,17 @@
                 <h2>Update Category</h2>
                <div class="block copyblock"> 
               <?php
-                    if (isset($updateCat)) {
-                        echo $updateCat;
+                    if (isset($updateBrand)) {
+                        echo $updateBrand;
                     }
               ?>
 
      
 
      <?php 
-        $getCat = $cat->getCatById($id);
-        if ($getCat) {
-           while ($result = $getCat->fetch_assoc()) {
+        $getBrand = $brand->getUpdatetById($id);
+        if ($getBrand) {
+           while ($result = $getBrand->fetch_assoc()) {
            
      ?>
 
@@ -50,7 +50,7 @@
                     <table class="form">					
                         <tr>
                             <td>
-                                <input type="text" name="catName"  value="<?php echo $result['catName']; ?>" class="medium" />
+                                <input type="text" name="brandName"  value="<?php echo $result['brandName']; ?>" class="medium" />
                             </td>
                         </tr>
 						<tr> 

@@ -44,16 +44,26 @@
                     <img src="img/livelogo.png" alt="Logo" />
 				</div>
 				<div class="floatleft middle">
-					<h1>easy Learning Project</h1>
-					<p>www.easylearningbd.com</p>
+					<h1>Dinko Dugec</h1>
+					
 				</div>
                 <div class="floatright">
                     <div class="floatleft">
                         <img src="img/img-profile.jpg" alt="Profile Pic" /></div>
                     <div class="floatleft marginleft10">
                         <ul class="inline-ul floatleft">
-                            <li>Hello Admin</li>
-                            <li><a href="#">Logout</a></li>
+
+
+                        <?php 
+
+                    if(isset($_GET['action']) && $_GET['action'] == "logout"){
+                        Session::destroy();
+                    }
+
+                        ?>
+                            <li>Hello <?php echo Session::get('adminName'); ?></li>
+                            <li><a href="?action=logout">Logout</a></li>
+
                         </ul>
                     </div>
                 </div>
@@ -65,7 +75,7 @@
         </div>
         <div class="grid_12">
             <ul class="nav main">
-                <li class="ic-dashboard"><a href="index.php"><span>Dashboard</span></a> </li>
+                <li class="ic-dashboard"><a href="dashboard.php"><span>Dashboard</span></a> </li>
                 <li class="ic-form-style"><a href=""><span>User Profile</span></a></li>
 		
 				<li class="ic-grid-tables"><a href="inbox.php"><span>Inbox</span></a></li>

@@ -9,105 +9,102 @@ Session::checkLogin();
 <?php
 
 
-class Category
-{
+class Category{
+	
+	private $db;
+	private $fm;
 
-    private $db; 
-    private $fm;  
-
-    public function  __construct()
+    public	function __construct()
     {
-      $this->db = new Database();
-      $this->fm = new Format();
-    }
+       $this->db   = new Database();
+       $this->fm   = new Format();
+	}
 
-    public function catInsert($catName)
-    {
-          $catName = $this->fm->validation($catName);
-          $catName = mysqli_real_escape_string($this->db-link, $catName);
-          if(empty($catName)){
-            $msg = "Category can not be empty ;
-            return $msg;
-        }else{
-            $query="INSERT INTO tbl_category(catName) VALUES ($catName)";
-            $catinsert = $this->db->insert($query);
-            if($catinsert){
-                $msg="<span class= 'succces'>Caegory inserted Successufully. </span>"
-                return $msg;
-             }else{
-                 $msg="<span class ='error'>Caegory Not inserted Successufully. </span>"
-                 return $msg;
-             }
-
-
-
-    }
-    
-     Public function getAllCat()
-     {
-
-             $query="SELECT * FROM tbl_category ORDER BY catID DESC";
-             $result = $this->db->select($query);
-             return $result; 
-          
-     }
+  public function catInsert($catName)
+  {
+  	$catName = $this->fm->validation($catName);
+    $catName =  mysqli_real_escape_string($this->db->link, $catName );
+    if (empty($catName)) {
+    	 $msg = "Category Field must not be empty";
+    	 return $msg;
+    	}else {
+    		$query = "INSERT INTO tbl_category(catName) VALUES ('$catName')";
+    		$catinsert = $this->db->insert($query);
+    		if ($catinsert) {
+    			$msg = "<span class='success'>Category Inserted Successfully.</span> ";
+    			return $msg;
+    		}else {
+    			$msg = "<span class='error'>Category Not Inserted .</span> ";
+    			return $msg;
+    		}
+    	}
 
 
-     Public function getByID($id)
-     {
-
-        $query="SELECT * FROM tbl_category WHERE catId="$id";
-        $result = $this->db->select($query);
-        return $result;
-
-
-     }
-
-     public function catUpdate˙($catName,$id)
-     {
-
-      $catName = $this->fm->validation($catName,$id){
-      $catName = mysqli_real_escape_string($this->db-link, $catName);
-      $id=mysqli_real_escape_string($this->db->link,$id)
-      if(empty($catName)){
-        $msg = "Category can not be empty ;
-        return $msg="<span class= 'succces'>Caegory field can not be empty. </span>";
-      }else{
-
-        $query="UPDATE tbl_category
-        SET
-        catName='catName'
-        where catId ='$id'";
-        $update_row = $this->db->updare($query);
-        if(update_row){
-          $msg="<span class ='error'>Caegory Update Successufully. </span>";
-                 return $msg;
-        }else{
-          $msg="<span class ='error'>Caegory Not Updated. </span>";
-                 return $msg;
-        }
-
-
-
-
-     }
-
-
-
-      public function delCatById()
-      {
-        $query="DELETE FROM tbl_category WHERE catId = '$id'";
-        $delData = $this->db->delete($query);
-        if($delData){
-          $msg="<span class ='error'>Category Deleted Successufully. </span>";
-                   return $msg;
-      } else{
-        $msg="<span class ='error'>Category Not Deleted . </span>";
-                   return $msg;
-    }
-         
-    
-    
   }
-    
-    ?>
+
+
+     public function getAllCat()
+     {
+         $query = "SELECT * FROM tbl_category ORDER BY catId DESC";
+         $result = $this->db->select($query);
+         return $result;
+
+     }
+
+
+     public function getCatById($id)
+     {
+     	$query = "SELECT * FROM tbl_category WHERE catId ='$id' ";
+         $result = $this->db->select($query);
+         return $result;
+
+     }
+
+
+     public function catUpdate($catName, $id)
+     {
+     $catName = $this->fm->validation($catName);
+     $catName =  mysqli_real_escape_string($this->db->link, $catName );
+     $id =  mysqli_real_escape_string($this->db->link, $id );
+     if (empty($catName)) {
+    	 $msg = "<span class='error'>Category Field Must Not be empty.</span> ";
+    	 return $msg;
+
+     }else {
+			$query = "UPDATE tbl_category
+            SET
+            catName = '$catName'
+            WHERE catId = '$id' ";
+            $update_row  = $this->db->update($query);
+            if ($update_row) {
+            	$msg = "<span class='success'>Category Updated Successfully.</span> ";
+            	return $msg;
+            }else {
+            	$msg = "<span class='error'>Category Not Updated .</span> ";
+    			return $msg;
+            }
+
+     }
+
+ }
+
+
+  public function delCatById($id)
+  {
+		  $query = "DELETE FROM tbl_category WHERE catId ='$id' ";
+		  $deldata = $this->db->delete($query);
+		  if ($deldata) {
+		  	$msg = "<span class='success'>Category Deleted Successfully.</span> ";
+		  return $msg;
+		  }else {
+		  	$msg = "<span class='error'>Category Not Deleted .</span> ";
+		    	 return $msg;
+  			}
+
+  	}
+
+
+  }
+  
+  
+  ?>

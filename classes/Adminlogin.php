@@ -8,30 +8,28 @@ Session::checkLogin();
 
 <?php
 
-class Adminlogin
-{
+class Adminlogin {
 
-    private $db; //database property
-    private $fm;  //Format class property
+	private $db;
+	private $fm;
 
-    public function  __construct()
-    {
-      $this->db = new Database();
-      $this->fm = new Format();
-    }
+    public	function __construct(){
+       $this->db   = new Database();
+       $this->fm   = new Format();
+		 
+	}
 
-    public function adminLogin($adminUser, $adminPass)
-    {
-            $adminUser=$this->fm->validation($adminUser);//here i with this format class object i access the method
-            $adminPass=$this->fm->validation( $adminPass);
+    public function adminLogin($adminUser,$adminPass){
+    	$adminUser = $this->fm->validation($adminUser);
+    	$adminPass = $this->fm->validation($adminPass);
 
-            $adminUser = mysqli_real_escape_string($this->db-link,$adminUser );
-            $adminPass = mysqli_real_escape_string($this->db-link,$adminPass );
+    	$adminUser =  mysqli_real_escape_string($this->db->link, $adminUser );
+    	$adminPass =  mysqli_real_escape_string($this->db->link, $adminPass );
 
-        if(empty($adminUser) || empty($adminPass)){
-            $loginmsg = "Username and Password can not be empty ;
-            return $loginmsg;
-        }else{
+    	if (empty($adminUser) || empty($adminPass)) {
+    	 $loginmsg = "User name or Password must not be empty";
+    	 return $loginmsg;
+    	}else {
 
     		$query = "SELECT * FROM tbl_admin WHERE adminUser='$adminUser' AND adminPass='$adminPass' ";
     		$result = $this->db->select($query);

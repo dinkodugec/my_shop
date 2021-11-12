@@ -1,27 +1,27 @@
-﻿﻿<?php include 'inc/header.php';?>
+<?php include 'inc/header.php';?>
 <?php include 'inc/sidebar.php';?>
-<?php include '../classes/Category.php';  ?>
+<?php include '../classes/Brand.php';  ?>
 
 <?php
  
-$cat =  new Category();
+$brand =  new Brand();
  
-if (isset($_GET['delcat'])) {
-	 $id = $_GET['delcat'];
-	 $delCat = $cat->delCatById($id);
+if (isset($_GET['delbrand'])) {
+	 $id = $_GET['delbrand'];
+	 $delBrand = $brand->delBrandById($id);
 
-}  
+}   
 
 ?>
 
 
         <div class="grid_10">
             <div class="box round first grid">
-                <h2>Category List</h2>
+                <h2>Brand List</h2>
                 <div class="block">    
           <?php
-         if (isset($delCat)) {
-         	echo  $delCat;
+         if (isset($delBrand)) {
+         	echo  $delBrand;
          }
           ?>
                 
@@ -33,24 +33,24 @@ if (isset($_GET['delcat'])) {
 					<thead>
 						<tr>
 							<th>Serial No.</th>
-							<th>Category Name</th>
+							<th>Brand Name</th>
 							<th>Action</th>
 						</tr>
 					</thead>
 					<tbody>
               <?php
-             $getCat = $cat->getAllCat();
-              if ($getCat) {
+             $getBrand = $brand->getAllBrand();
+              if ($getBrand) {
               	$i = 0;
-              	while ($result = $getCat->fetch_assoc()) {
+              	while ($result = $getBrand->fetch_assoc()) {
               	 $i++;
               ?>
 
 						<tr class="odd gradeX">
 							<td><?php echo $i; ?></td>
-							<td><?php echo $result['catName']; ?></td>
-							<td><a href="catedit.php?catid=<?php echo $result['catId']; ?>">Edit</a> 
-								|| <a onclick="return confirm('Are you sure to delete')" href="?delcat=<?php echo $result['catId']; ?>">Delete</a></td>
+							<td><?php echo $result['brandName']; ?></td>
+							<td><a href="brandedit.php?brandid=<?php echo $result['brandId']; ?>">Edit</a> 
+								|| <a onclick="return confirm('Are you sure to delete')" href="?delbrand=<?php echo $result['brandId']; ?>">Delete</a></td>
 						</tr>
 
 						<?php 	} }  ?>
