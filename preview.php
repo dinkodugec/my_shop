@@ -1,55 +1,49 @@
 
 <?php include 'inc/header.php' ;?>
 
+<?php
+  if(!isset($_GET['proid']) || $_GET['proid'] == NULL ) {
+      echo "<script>window.location = '404.php'; </script> "; // added the 404.php page 
+   }else{ 
+$id = $_GET['proid'];
+ }
+ ?>
+
  <div class="main">
-    <div class="content">
+ <div class="content">
     	<div class="section group">
-				<div class="cont-desc span_1_of_2">				
-					<div class="grid images_3_of_2">
-						<img src="images/preview-img.jpg" alt="" />
-					</div>
-				<div class="desc span_3_of_2">
-					<h2>Lorem Ipsum is simply dummy text </h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>					
-					<div class="price">
-						<p>Price: <span>$500</span></p>
-						<p>Category: <span>Laptop</span></p>
-						<p>Brand:<span>Samsnumg</span></p>
-					</div>
-				<div class="add-cart">
-					<form action="cart.html" method="post">
-						<input type="number" class="buyfield" name="" value="1"/>
-						<input type="submit" class="buysubmit" name="submit" value="Buy Now"/>
-					</form>				
+	 <div class="cont-desc span_1_of_2">	
+     <?php 
+ 	 $getPd = $pd->getSingleProduct($id); 
+              if ($getPd) {
+        while ($result = $getPd->fetch_assoc()) { 
+	 ?> 
+ 
+  <div class="grid images_3_of_2">
+	 <img src="admin/<?php echo $result['image']; ?>" alt="" /> // show Product Image 
+	 </div>
+	 <div class="desc span_3_of_2">
+	 <h2><?php echo $result['productName'];?> </h2> // show Product Image 
+	 <p><?php echo $fm->textShorten($result['body'], 200);?></p>	 // show Product body
+	 <div class="price">
+	 <p>Price: <span>$<?php echo $result['price'];?></span></p> // show Product price
+	 <p>Category: <span><?php echo $result['catName'];?></span></p> // show Product catName
+	 <p>Brand:<span><?php echo $result['brandName'];?></span></p> // show Product brandName
+	   </div>
+	 <div class="add-cart">
+	 <form action=" " method="post">
+	 <input type="number" class="buyfield" name="quantity" value="1"/>
+	 <input type="submit" class="buysubmit" name="submit" value="Add to Cart"/>
+		 </form>				
 				</div>
+         
 			</div>
 			<div class="product-desc">
 			<h2>Product Details</h2>
-			<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-	        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+			<?php echo $result['body'];?>  // Show product details body 
 	    </div>
-				
+		<?php } } ?>  // End if condition and While loop.		
 	</div>
-				<div class="rightsidebar span_3_of_1">
-					<h2>CATEGORIES</h2>
-					<ul>
-				      <li><a href="productbycat.html">Mobile Phones</a></li>
-				      <li><a href="productbycat.html">Desktop</a></li>
-				      <li><a href="productbycat.html">Laptop</a></li>
-				      <li><a href="productbycat.html">Accessories</a></li>
-				      <li><a href="productbycat.html#">Software</a></li>
-					   <li><a href="productbycat.html">Sports & Fitness</a></li>
-					   <li><a href="productbycat.html">Footwear</a></li>
-					   <li><a href="productbycat.html">Jewellery</a></li>
-					   <li><a href="productbycat.html">Clothing</a></li>
-					   <li><a href="productbycat.html">Home Decor & Kitchen</a></li>
-					   <li><a href="productbycat.html">Beauty & Healthcare</a></li>
-					   <li><a href="productbycat.html">Toys, Kids & Babies</a></li>
-    				</ul>
-    	
- 				</div>
- 		</div>
- 	</div>
 	</div>
   
 <?php include 'inc/footer.php' ;?>
