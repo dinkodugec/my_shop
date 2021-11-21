@@ -2,12 +2,24 @@
 <?php include 'inc/header.php' ;?>
 
 <?php
-  if(!isset($_GET['proid']) || $_GET['proid'] == NULL ) {
+      if(!isset($_GET['proid']) || $_GET['proid'] == NULL ) {
       echo "<script>window.location = '404.php'; </script> "; // added the 404.php page 
-   }else{ 
-$id = $_GET['proid'];
- }
+        }else{ 
+            $id = $_GET['proid'];
+             }
+
  ?>
+
+
+<?php 
+    
+        if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
+        $quantity = $_POST['quantity'];
+       
+		$addCart = $ct->addToCart($quantity, $id);
+        }   
+?>
+
 
  <div class="main">
  <div class="content">
@@ -31,7 +43,7 @@ $id = $_GET['proid'];
 	 <p>Brand:<span><?php echo $result['brandName'];?></span></p> // show Product brandName
 	   </div>
 	 <div class="add-cart">
-	 <form action=" " method="post">
+	 <form action="" method="post">
 	 <input type="number" class="buyfield" name="quantity" value="1"/>
 	 <input type="submit" class="buysubmit" name="submit" value="Add to Cart"/>
 		 </form>				
