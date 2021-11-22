@@ -5,6 +5,11 @@
     	<div class="cartoption">		
 			<div class="cartpage">
 			    	<h2>Your Cart</h2>
+					<?php
+                      if (isset($updateCart)) {
+                    	echo $updateCart;
+                         } 
+                    ?>
        
 	 <table class="tblone">
 	  <tr>
@@ -31,10 +36,11 @@
 	 <td>$ <?php echo $result['price'];  ?></td>
 		 <td>
 	
- <form action="" method="post"> 
-      <input type="number" value="1"/>
-      <input type="submit" name="submit" value="Update"/>
-		 </form>
+		 <form action="" method="post">
+		 <input type="hidden" name="cartId" value="<?php echo $result['cartId'];  ?>"/>
+		 <input type="number" name="quantity" value="<?php echo $result['quantity'];  ?>"/>
+		 <input type="submit" name="submit" value="Update"/>
+			 </form>
 			 </td>
 		 <td>$ 
      		 <?php 

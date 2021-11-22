@@ -5,6 +5,13 @@ include_once ($filepath.'/../helpers/Format.php');
  
 ?>
 
+<?php 
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $cartId = $_POST['cartId'];
+        $quantity = $_POST['quantity'];
+        $updateCart = $ct->updateCartQuantity($cartId, $quantity);
+        }  
+?>
 
 <?php
 class Cart
@@ -49,7 +56,7 @@ class Cart
     			header("Location:404.php");
     		} 
      }
-     
+
      }
 
      public function getCartProduct()
@@ -58,6 +65,24 @@ class Cart
         $query = "SELECT * FROM tbl_cart WHERE sId ='$sId' ";
            $result = $this->db->select($query);
            return $result;
+     }
+
+     public function updateCartQuantity($cartId, $quantity)
+     {
+        $cartId =  mysqli_real_escape_string($this->db->link, $cartId ); 
+      $quantity =  mysqli_real_escape_string($this->db->link, $quantity );
+  
+     $query = "UPDATE tbl_cart
+                 SET
+                 quantity = '$quantity'
+                 WHERE cartId = '$cartId' ";
+                 $update_row  = $this->db->update($query);
+                 if ($update_row) {
+                      header("Location:cart.php");
+                 }else {
+                     $msg = "<span class='error'>Quantity Not Updated .</span> ";
+                     return $msg; // here i return some message 
+                 } 
     }
 
 
