@@ -1,4 +1,11 @@
 <?php include 'inc/header.php'; ?>
+
+<?php
+ if (isset($_GET['delpro'])) {
+ 	 $delId = $_GET['delpro'];
+ 	 $delProduct = $ct->delProductByCart($delId);
+ }
+?>
  
  <div class="main">
     <div class="content">
@@ -6,9 +13,12 @@
 			<div class="cartpage">
 			    	<h2>Your Cart</h2>
 					<?php
-                      if (isset($updateCart)) {
+                        if (isset($updateCart)) {
                     	echo $updateCart;
                          } 
+						 if (isset($delProduct)) {
+							echo $delProduct;
+						 }
                     ?>
        
 	 <table class="tblone">
@@ -48,13 +58,13 @@
      			 echo $total; 
               ?>			
  
-			 </td>
-        <td><a href="">X</a></td>
-							</tr>
+		 </td>
+			 <td><a onclick="return confirm('Are you sure to Delete');" href="?delpro=<?php echo $result['cartId']; ?>">X</a></td>
+	 </tr>
  	          <?php  	  
  	    	 $sum = $sum + $total;  // nakon ovog php bloka završava iteracija
                ?> 
-			<?php } }   ?>    
+		   	<?php } }   ?>    
 
 		</table>  
 		
