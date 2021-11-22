@@ -38,18 +38,20 @@
 			 </td>
 		 <td>$ 
      		 <?php 
-     			 $total = $result['price'] * $result['quantity'];
+     			 $total = $result['price'] * $result['quantity'];     //total price
      			 echo $total; 
               ?>			
  
 			 </td>
- <td><a href="">X</a></td>
+        <td><a href="">X</a></td>
 							</tr>
- 	 <?php  	  
- 		 $sum = $sum + $total; 
- ?> 
-			<?php } }   ?> 
-		</table>
+ 	          <?php  	  
+ 	    	 $sum = $sum + $total;  // nakon ovog php bloka završava iteracija
+               ?> 
+			<?php } }   ?>    
+
+		</table>  
+		
  
  <table style="float:right;text-align:left;" width="40%">
 		 <tr>
