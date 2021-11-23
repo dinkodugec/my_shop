@@ -6,6 +6,20 @@
  	 $delProduct = $ct->delProductByCart($delId);
  }
 ?>
+
+<?php 
+    
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $cartId = $_POST['cartId'];
+        $quantity = $_POST['quantity'];
+        
+        $updateCart = $ct->updateCartQuantity($cartId, $quantity);
+        if ($quantity <= 0) {
+        	$delProduct = $ct->delProductByCart($cartId);
+        }
+    }   
+
+?>
  
  <div class="main">
     <div class="content">
