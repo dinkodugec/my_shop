@@ -45,27 +45,32 @@
 		 <th width="15%">Total Price</th>
 		 <th width="10%">Action</th>
 			 </tr>
-              <?php
- 	 $getPro = $ct->getCartProduct();  // Create this method in our Cart.php Class page. 
- 	 if ($getPro) {
+             
+	<?php
+ 	   
+		$getPro = $ct->getCartProduct();  // Create this method in our Cart.php Class page. 
+ 	    if ($getPro) {
  		 $i = 0;
  		 $sum = 0;
+	     $qty = 0;
  		 while ($result = $getPro->fetch_assoc()) {
  		 $i++;
- 			  ?>
- 	 <tr>
-	   <td><?php echo $i;  ?></td>
-	 <td><?php echo $result['productName'];  ?></td>
-	 <td><img src="admin/<?php echo $result['image']; ?>" alt=""/></td>
-	 <td>$ <?php echo $result['price'];  ?></td>
-		 <td>
-	
+    ?>
+ 	      
+	   <tr>
+	        <td><?php echo $i;  ?></td>
+	        <td><?php echo $result['productName'];  ?></td>
+	        <td><img src="admin/<?php echo $result['image']; ?>" alt=""/></td>
+	        <td>$ <?php echo $result['price'];  ?></td>
+		   
+		  <td>
 		 <form action="" method="post">
 		 <input type="hidden" name="cartId" value="<?php echo $result['cartId'];  ?>"/>
 		 <input type="number" name="quantity" value="<?php echo $result['quantity'];  ?>"/>
 		 <input type="submit" name="submit" value="Update"/>
-			 </form>
-			 </td>
+     	 </form>
+		 </td>
+		
 		 <td>$ 
      		 <?php 
      			 $total = $result['price'] * $result['quantity'];     //total price
@@ -74,10 +79,15 @@
  
 		 </td>
 			 <td><a onclick="return confirm('Are you sure to Delete');" href="?delpro=<?php echo $result['cartId']; ?>">X</a></td>
-	 </tr>
- 	          <?php  	  
- 	    	 $sum = $sum + $total;  // nakon ovog php bloka završava iteracija
-               ?> 
+	  </tr>
+	         <?php 
+               $qty = $qty +  $result['quantity'];
+               $sum = $sum + $total;
+               Session::set("qty", $qty);
+               Session::set("sum", $sum);
+             ?>
+			
+            
 		   	<?php } }   ?>    
 
 		</table>  
@@ -91,18 +101,19 @@
 		 	<tr>
 		 	<th>VAT : </th>
 			 <td> 
-                            10% 
-				 </td>
-			 </tr>
-			 	<tr>
-			 	<th>Grand Total :</th>
+                10% 
+			</td>
+		     </tr>
+			<tr>
+		   <th>Grand Total :</th>
 		 	<td>$<?php 
 		 	$vat = $sum * 0.1;
 	 		$gtotal = $sum + $vat;
 		 	echo $gtotal;
 		 	?> </td>
 			 </tr>
-					   </table> 
+   </table> 
+   
 	</div>
 					<div class="shopping">
 	 <div class="shopleft">
