@@ -73,16 +73,16 @@ class Cart
       $quantity =  mysqli_real_escape_string($this->db->link, $quantity );
   
      $query = "UPDATE tbl_cart
-                 SET
-                 quantity = '$quantity'
-                 WHERE cartId = '$cartId' ";
-                 $update_row  = $this->db->update($query);
-                 if ($update_row) {
-                      header("Location:cart.php");
-                 }else {
-                     $msg = "<span class='error'>Quantity Not Updated .</span> ";
-                     return $msg; // here i return some message 
-                 } 
+	            SET
+	            quantity = '$quantity'
+	            WHERE cartId = '$cartId' ";
+	            $update_row  = $this->db->update($query);
+	            if ($update_row) {
+	            	 header("Location:cart.php");
+	            }else {
+	            	$msg = "<span class='error'>Quantity Not Updated .</span> ";
+	    			return $msg;
+	            } 
     }
 
     public function delProductByCart($delId)
