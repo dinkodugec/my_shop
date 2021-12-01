@@ -1,20 +1,32 @@
 <?php include 'inc/header.php' ;?>
 
 <?php
-  if (!isset($_GET['catId'])  || $_GET['catId'] == NULL ) {
-     echo "<script>window.location = '404.php';  </script>";
-  }else {
-    $id = $_GET['catId']; // here i get this id and take this with one variable. 
-  }
+     if (!isset($_GET['catId'])  || $_GET['catId'] == NULL ) {
+        echo "<script>window.location = '404.php';  </script>";
+     }else {
+      $id = $_GET['catId']; // here i get this id and take this with one variable. 
+     }
  ?>
 
  <div class="main">
     <div class="content">
     	<div class="content_top">
     		<div class="heading">
-    		<h3>Latest from Category</h3>
-    		</div>
-    		<div class="clear"></div>
+
+
+    		<?php
+               $productbycat = $pd->productByOnlyCat($id); // Create one method on Product.php Class 
+               if ($productbycat) {
+                  while ($result = $productbycat->fetch_assoc()) {
+           ?> 
+ 
+	            <h3>Latest from <?php echo $result['catName']; ?> </h3> // Show category name 
+ 
+ 	       <?php    } } ?> // End of if condition and While Loop
+        	</div>
+    		
+			
+			<div class="clear"></div>
     	</div>
 		<div class="section group">
  

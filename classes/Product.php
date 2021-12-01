@@ -256,6 +256,13 @@ include_once ($filepath.'/../helpers/Format.php');
                 return $result; 
         } 
 
+        public function productByOnlyCat($id)
+        {
+            $query = "SELECT * FROM tbl_category WHERE catId ='$id' ";
+                   $result = $this->db->select($query);
+                   return $result;
+           }
+
 
 }
    ?>
