@@ -23,7 +23,7 @@
 
  <div class="main">
  <div class="content">
-    	<div class="section group">
+ <div class="section group">
 	 <div class="cont-desc span_1_of_2">	
      <?php 
  	 $getPd = $pd->getSingleProduct($id); 
@@ -66,6 +66,25 @@
 			<?php echo $result['body'];?>  // Show product details body 
 	    </div>
 		<?php } } ?>  // End if condition and While loop.		
+	</div>
+
+	<div class="rightsidebar span_3_of_1">
+					<h2>CATEGORIES</h2>
+					<ul>
+ 				
+ 				<?php 
+ 				 $getCat = $cat->getAllCat();
+ 				 if ($getCat) {
+ 				 	while ($result = $getCat->fetch_assoc()) {
+ 				  	
+				?> 
+ 				
+				 <li><a href="productbycat.php?catId=<?php echo $result['catId']; ?>"><?php echo $result['catName']; ?></a></li>
+				     
+			   <?php }  }  ?>
+				       
+    				</ul>
+    	
 	</div>
 	</div>
   
