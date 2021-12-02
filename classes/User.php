@@ -16,4 +16,9 @@ class User
        $this->db   = new Database();
        $this->fm   = new Format();
 	}
+
+    public function customerRegistration($_POST)
+    {  
+        
+    }
 }
