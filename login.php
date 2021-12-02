@@ -21,6 +21,12 @@
                      }
                     ?>
 
+                    <?php 
+                       if (isset($customerReg)) {
+                       echo $customerReg;
+	                   }  
+                    ?> 
+
 
 
     	<div class="register_account">
