@@ -84,7 +84,7 @@
 			 <?php 
 			  $login =  Session::get("cuslogin");
 			  if ($login == false) { ?>
-			  <a href="login.php">Login</a>
+			  <a href="login.php">Log in</a>
 			
 				<?php   }else { ?>
 	            <a href="?cid=<?php Session::get('cmrId')?>">Logout</a>
