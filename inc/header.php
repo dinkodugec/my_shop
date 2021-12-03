@@ -66,7 +66,7 @@
                                      }else{
                                         echo "(Empty)";
                                          }
-                                }
+                                
                           
                                 ?> 
 
@@ -75,7 +75,12 @@
 						</div>
 			      </div>
 
-       
+				  <?php
+                    if (isset($_GET['cid'])) {  // i get id as cid.
+						$delDate=$ct->delCustomerCart();
+                    Session::destroy();  // destroy this session 
+                     }
+                  ?>
 
 
 
