@@ -70,13 +70,20 @@ class User
           Session::set("cuslogin", true);
           Session::set("cmrId", $value['id']);
           Session::set("cmrName", $value['name']);
-          header("Location:order.php");// redirect to order.php page after login 
+          header("Location:cart.php");// redirect to order.php page after login 
           }else {
               $msg = "<span class='error'>Email Or Password Not Matched</span> ";
                     return $msg;// return message 
           }
 
     
+    }
+
+    public function getCustomerData($id)
+    {
+        $query = "SELECT * FROM tbl_customer WHERE id ='$id' ";
+           $result = $this->db->select($query);
+           return $result;
     }
 
 }

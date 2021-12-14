@@ -58,7 +58,7 @@
 								<span class="cart_title">Cart</span>
                                 <?php 
  
-                                  $$getData = $ct->checkCartTable();
+                                  $getData = $ct->checkCartTable();
                                   if ($getData) {
                                     $sum = Session::get("sum");
                                    $qty = Session::get("qty"); // Added product quantity in session get  
@@ -108,19 +108,26 @@
 <div class="menu">
 	<ul id="dc_mega-menu-orange" class="dc_mm-orange">
 	  <li><a href="index.php">Home</a></li>
-	  
-	 
-	  
+	  <li><a href="products.php">Our Products</a></li>
+	  <li><a href="topbrands.php">Top Brands</a></li>
 
-	
+	  <?php 
+        $chkCart = $ct->checkCartTable(); 
+        if ($chkCart) { ?>
+         <li><a href="cart.php">Cart</a></li>
+        <li><a href="payment.php">Payment</a></li>
+      <?php  }  ?>
 
-            
-		
-		<li><a href="wishlist.php">WishList</a> </li>
-        
+	  <?php 
+	    $login =  Session::get("cuslogin");
+	    if ($login == true) { ?>
+	    <li><a href="profile.php">Profile</a></li>
+        <?php } 
+	    ?>
 
-
-	  <li><a href="contact.php">Contact</a> </li>
+	  <li><a href="profile.php">Profile</a></li>
+      <li><a href="contact.php">Contact</a></li>
+	  <li><a href="wishlist.php">WishList</a> </li>
 	  <div class="clear"></div>
 	</ul>
 </div>

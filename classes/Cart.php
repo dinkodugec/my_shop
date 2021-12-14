@@ -98,13 +98,7 @@ class Cart
                      }
     }
 
-    public function checkCartTable()
-    {
-        $sId = session_id();
-           $query = "SELECT * FROM tbl_cart WHERE sId ='$sId' ";
-        $result = $this->db->select($query);
-        return $result;
-    }
+    
 
     public function delCustomerCart()
     {
@@ -112,6 +106,15 @@ class Cart
       $query = "DELETE FROM tbl_cart WHERE sId ='$sId'";
       $this->db->delete($query);
     }
+
+    public function checkCartTable()
+    {
+      $sId = session_id();
+    $query = "SELECT * FROM tbl_cart WHERE sId ='$sId' ";
+      $result = $this->db->select($query);
+      return $result;
+    }
+   
 
 
 }
