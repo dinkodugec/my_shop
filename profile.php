@@ -30,48 +30,64 @@
  
     <table class="tblone">          <!-- table for profile of user-->
   
-          <tr>
+        <tr>  
+          <td colspan="3"> <h2>  Your Profile Details </h2> </td>
+        </tr>
+
+
+       <tr>
           <td width="20%"> Name  </td>
           <td width="5%"> : </td>
           <td> <?php echo $result['name']; ?>  </td>
       </tr>
-        <tr>
+      
+      <tr>
           <td> Phone  </td>
           <td> : </td>
           <td> <?php echo $result['phone']; ?> </td>
       </tr>
  
-        <tr>
+       <tr>
           <td> Email  </td>
           <td> : </td>
           <td> <?php echo $result['email']; ?>  </td>
-      </tr>
-        <tr>
+       </tr>
+       
+       <tr>
           <td> Address  </td>
           <td> : </td>
           <td> <?php echo $result['address']; ?>  </td>
-      </tr>
+        </tr>
+        
         <tr>
           <td> City  </td>
           <td> : </td>
           <td><?php echo $result['city']; ?>  </td>
-      </tr>
+        </tr>
+       
         <tr>
           <td> Zipcode  </td>
           <td> : </td>
           <td> <?php echo $result['zip']; ?>  </td>
-      </tr>
-        <tr>
+       </tr>
+       
+       <tr>
           <td> Country  </td>
           <td> : </td>
           <td> <?php echo $result['country']; ?>  </td>
-      </tr>
+        </tr>
+
+        <tr>
+          <td> </td>
+          <td> </td>
+          <td><a href="editprofile.php"> Update Details </a> </td> <!-- // link to update customer profile -->
+        </tr>
      
     </table>
+
   <?php   } }  ?> 
-    </div>
- </div>
-</div>
+  
+
    
      </div>
   </div> 
