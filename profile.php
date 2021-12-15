@@ -6,6 +6,11 @@
      	header("Location:login.php");
        }
      ?>
+
+   <style>
+    .tblone{width: 550px; margin: 0 auto; border: 2px solid #ddd; } 
+     .tblone tr td{text-align: justify;} 
+   </style>
  
  <div class="main">
    <div class="content">
