@@ -40,7 +40,7 @@ class Cart
         $image = $result['image'];
      
         $query = "SELECT * FROM tbl_cart WHERE productId = '$productId' AND sId ='$sId'";
-    $getPro = $this->db->select($chquery);
+    $getPro = $this->db->select($query);
     if ($getPro) {
     	$msg = "Product Already Added!";
     	return $msg;
@@ -136,6 +136,13 @@ class Cart
        } 
      
        }
+
+       public function getOrderProduct($cmrId)
+       {
+         $query = "SELECT * FROM tbl_order WHERE cmrId ='$cmrId' ORDER BY productId DESC ";
+         $result = $this->db->select($query);
+         return $result;
+         }
    
 
 
