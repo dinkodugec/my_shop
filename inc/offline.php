@@ -7,6 +7,15 @@
        }
      ?>
 
+    <?php
+        if (isset($_GET['orderid']) && $_GET['orderid'] == 'order' ) {
+        $cmrId =  Session::get("cmrId");
+        $insertOrder = $ct->orderProduct($cmrId); // create this method in our Cart.php Class page 
+         $delDate = $ct->delCustomerCart();
+         header("Location:success.php");
+         }
+    ?>
+
         <style>
               .division{width: 50%;float: left;}
               .tblone{width: 500px; margin: 0 auto; border: 2px solid #ddd; font-size: 13px;} 
@@ -152,7 +161,7 @@
  
      </div>
  </div>
-   <div class="ordernow"> <a href=" "> Order </a></div>
+   <div class="ordernow"> <a href="?orderid=order "> Order </a></div>
  
 </div>
    
