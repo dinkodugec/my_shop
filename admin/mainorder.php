@@ -20,6 +20,7 @@ include_once ($filepath.'/../classes/Cart.php');
 	 <th>Product</th>
 	 <th>quantity</th>
 	 <th>Price</th>
+     <th>Cust Id</th>
 	 <th>Address</th>
 	 <th>Action</th>
 		 </tr>
@@ -41,6 +42,7 @@ include_once ($filepath.'/../classes/Cart.php');
 	     <td><?php echo $result['productName']; ?></td>
 	     <td><?php echo $result['quantity']; ?></td>
 	     <td><?php echo $result['price']; ?></td>
+         <td><?php echo $result['cmrId']; ?></td>
 	     <td><a href="customer.php?custId=<?php echo $result['cmrId']; ?>"> View Address</a></td> 
 	     <td><a href=" ">Shifted</a> </td> 
      </tr>
