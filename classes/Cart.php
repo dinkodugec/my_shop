@@ -137,12 +137,26 @@ class Cart
      
        }
 
-       public function getOrderProduct($cmrId)
-       {
+   public function getOrderProduct($cmrId)
+       
+     {
          $query = "SELECT * FROM tbl_order WHERE cmrId ='$cmrId' ORDER BY productId DESC ";
          $result = $this->db->select($query);
          return $result;
-         }
+       
+     }
+
+        
+        
+   public function checkOrder($cmrId)
+         
+      {
+         
+          $query = "SELECT * FROM tbl_order WHERE cmrId ='$cmrId' ";
+          $result = $this->db->select($query);
+          return $result; 
+
+      }
    
 
 

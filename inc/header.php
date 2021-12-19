@@ -119,6 +119,13 @@
       <?php  }  ?>
 
 	  <?php 
+       $cmrId =  Session::get("cmrId");
+        $chkOrder = $ct->checkOrder($cmrId); //I create one method in our Cart.php Class 
+        if ($chkOrder) { ?>
+        <li><a href="order.php">Order</a></li>  <!-- Order page  -->
+      <?php  }  ?>
+
+	  <?php 
 	    $login =  Session::get("cuslogin");
 	    if ($login == true) { ?>
 	    <li><a href="profile.php">Profile</a></li>
