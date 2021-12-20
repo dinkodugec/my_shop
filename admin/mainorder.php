@@ -16,6 +16,14 @@ $fm = new Format(); // Create Format class object
  	$shift = $ct->productShifted($id,$time,$price);
  
  }
+
+ if (isset($_GET['delproid'])) {
+    $id = $_GET['delproid'];
+    $price = $_GET['price'];
+    $time = $_GET['time'];
+    $delOrder = $ct->delproductShifted($id,$time,$price);
+}
+
 ?>
  
  <div class="grid_10">
@@ -26,7 +34,13 @@ $fm = new Format(); // Create Format class object
          if (isset($shift)) {
          echo $shift;
          } 
+
+         if (isset($delOrder)) {
+            echo $delOrder;
+            } 
       ?>
+
+      
 
            <div class="block">        
         
@@ -67,7 +81,7 @@ $fm = new Format(); // Create Format class object
             <?php if ($result['status'] == '0') { ?>
         <td><a href="?shiftid=<?php echo $result['cmrId']; ?>&price=<?php echo $result['price']; ?>&time=<?php echo $result['date']; ?>">Shifted</a></td>
 	        <?php	} else {    ?>
-        <td><a href="?delproid=<?php echo $result['cmrId']; ?>&price=<?php echo $result['price']; ?>&time=<?php echo $result['date']; ?>">Remove</a></td>
+                <td><a href="?delproid=<?php echo $result['cmrId']; ?>&price=<?php echo $result['price']; ?>&time=<?php echo $result['date']; ?>">Remove</a></td>
              <?php } ?>
 
 	     <td><a href=" ">Shifted</a> </td> 
