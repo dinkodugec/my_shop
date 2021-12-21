@@ -138,14 +138,12 @@
 				<li><a href="profile.php">Profile</a></li>
 		<?php } 	?>
 
-                <?php
-                      
- 					$getPd = $pd->getCompareProduct($cmrId);
- 					if ($getPd) {  
- 						?>
-		
+       <?php
+        $getPd = $pd->getCompareProduct($cmrId);
+ 		if ($getPd) {  
+ 		?>
 		<li><a href="compare.php">Compare</a> </li>
-         <?php  }?>
+        <?php  }?>
 
             <?php
                      

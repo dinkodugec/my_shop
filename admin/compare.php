@@ -1,0 +1,64 @@
+<?php include 'inc/header.php'; ?>
+<?php
+ if (isset($_GET['delpro'])) {
+ 	 $delId = $_GET['delpro'];
+ 	 $delProduct = $ct->delProductByCart($delId);
+ }
+?>
+
+
+
+
+
+
+ <div class="main">
+    <div class="content">
+    	<div class="cartoption">		
+			<div class="cartpage">
+			    	<h2>Compare Products</h2>
+
+					<table class="tblone">
+			     	<tr>
+					<th width="5%">Sl</th>
+					<th width="30%">Product Name</th>
+					<th width="10%">Image</th>
+					<th width="15%">Price</th>
+					<th width="10%">Action</th>
+					</tr>
+                     <?php
+ 					$getPro = $ct->getCartProduct();
+ 					if ($getPro) {
+ 						$i = 0;
+ 						$sum = 0;
+ 						$qty = 0;
+ 						while ($result = $getPro->fetch_assoc()) {
+ 							 $i++;
+ 						         ?>
+ 								<tr>
+								<td><?php echo $i;  ?></td>
+								<td><?php echo $result['productName'];  ?></td>
+								<td><img src="admin/<?php echo $result['image']; ?>" alt=""/></td>
+								<td>$ <?php echo $result['price'];  ?></td>
+								<td></td>
+						       
+						    	</tr>
+ 								<?php } }   ?>
+						</table>
+								         
+   
+     	</div>
+        <div class="shopping">
+        <div class="shopleft">
+	  <a href="index.php"> <img src="images/shop.png" alt="" /></a>
+       </div>
+       <div class="shopright">
+	   <a href="payment.php"> <img src="images/check.png" alt="" /></a>
+    </div>
+    </div>
+  </div>  	
+  <div class="clear"></div>
+  </div>
+ </div>
+</div>
+   
+    <?php include 'inc/footer.php'; ?>

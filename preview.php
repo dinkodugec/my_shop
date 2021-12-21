@@ -21,6 +21,14 @@
 ?>
 
 
+<?php  
+    $cmrId = Session::get("cmrId");
+    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['compare'])) {
+        $productId = $_POST['productId'];     
+        $insertCom = $pd->inserCompareDate($productId, $cmrId); 
+?> 
+
+
  <div class="main">
  <div class="content">
  <div class="section group">
@@ -46,8 +54,8 @@
 	 <form action="" method="post">
 	 <input type="number" class="buyfield" name="quantity" value="1"/>
 	 <input type="submit" class="buysubmit" name="submit" value="Add to Cart"/>
-		 </form>				
-				</div>
+	 </form>				
+	</div>
 
 	 <span style="color: red; font-size: 18px;">
 
@@ -56,16 +64,29 @@
                  if (isset($addCart)) {
             	echo $addCart;
                  }
+            ?>
+
+          <?php 
+		     if (isset($insertCom)) {
+             echo $insertCom;
+              }
            ?>
 
       </span>
+
+	  <div class="add-cart">
+	  <form action="" method="post">
+        <input type="hidden" class="buyfield" name="productId" value="<?php echo $result['productId']; ?>"/>
+	    <input type="submit" class="buysubmit" name="compare" value="Add to Compare"/>
+	  </form>	
+     </div>
          
 			</div>
 			<div class="product-desc">
 			<h2>Product Details</h2>
 			<?php echo $result['body'];?>  // Show product details body 
 	    </div>
-		<?php } } ?>  // End if condition and While loop.		
+		<?php } } ?>  <!-- // End if condition and While loop. -->		
 	</div>
 
 	<div class="rightsidebar span_3_of_1">
@@ -89,3 +110,4 @@
 	</div>
   
 <?php include 'inc/footer.php' ;?>
+
