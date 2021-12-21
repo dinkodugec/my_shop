@@ -40,15 +40,15 @@
 	 ?> 
  
   <div class="grid images_3_of_2">
-	 <img src="admin/<?php echo $result['image']; ?>" alt="" /> // show Product Image 
+	 <img src="admin/<?php echo $result['image']; ?>" alt="" /> <!-- // show Product Image  -->
 	 </div>
 	 <div class="desc span_3_of_2">
-	 <h2><?php echo $result['productName'];?> </h2> // show Product Image 
-	 <p><?php echo $fm->textShorten($result['body'], 200);?></p>	 // show Product body
+	 <h2><?php echo $result['productName'];?> </h2> <!-- // show Product Image  -->
+	 <p><?php echo $fm->textShorten($result['body'], 200);?></p>	 <!--  show Product body -->
 	 <div class="price">
-	 <p>Price: <span>$<?php echo $result['price'];?></span></p> // show Product price
-	 <p>Category: <span><?php echo $result['catName'];?></span></p> // show Product catName
-	 <p>Brand:<span><?php echo $result['brandName'];?></span></p> // show Product brandName
+	 <p>Price: <span>$<?php echo $result['price'];?></span></p> <!-- // show Product price -->
+	 <p>Category: <span><?php echo $result['catName'];?></span></p> <!-- // show Product catName -->
+	 <p>Brand:<span><?php echo $result['brandName'];?></span></p> <!-- // show Product brandName -->
 	   </div>
 	 <div class="add-cart">
 	 <form action="" method="post">
@@ -84,7 +84,7 @@
 			</div>
 			<div class="product-desc">
 			<h2>Product Details</h2>
-			<?php echo $result['body'];?>  // Show product details body 
+			<?php echo $result['body'];?>  <!-- // Show product details body  -->
 	    </div>
 		<?php } } ?>  <!-- // End if condition and While loop. -->		
 	</div>

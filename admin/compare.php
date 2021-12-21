@@ -15,7 +15,7 @@
     <div class="content">
     	<div class="cartoption">		
 			<div class="cartpage">
-			    	<h2>Compare Products</h2>
+			    	<h2>Compare </h2>
 
 					<table class="tblone">
 			     	<tr>
@@ -26,8 +26,9 @@
 					<th width="10%">Action</th>
 					</tr>
                      <?php
- 					$getPro = $ct->getCartProduct();
- 					if ($getPro) {
+					 $cmrId=Session::get("cmrId");
+ 					$getPd = $pd->getCompareProduct($cmrId);
+ 					if ($getPd) {
  						$i = 0;
  						$sum = 0;
  						$qty = 0;
@@ -47,13 +48,11 @@
 								         
    
      	</div>
-        <div class="shopping">
-        <div class="shopleft">
+ <div class="shopping">
+  <div class="shopleft">
 	  <a href="index.php"> <img src="images/shop.png" alt="" /></a>
-       </div>
-       <div class="shopright">
-	   <a href="payment.php"> <img src="images/check.png" alt="" /></a>
-    </div>
+  </div>
+       
     </div>
   </div>  	
   <div class="clear"></div>

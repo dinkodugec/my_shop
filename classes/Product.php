@@ -269,8 +269,8 @@ include_once ($filepath.'/../helpers/Format.php');
             $cmrId       =  mysqli_real_escape_string($this->db->link, $cmrId);
             $productId   =  mysqli_real_escape_string($this->db->link, $productId);
            
-           $cquery = "SELECT * FROM tbl_compare WHERE cmrId ='$cmrId' AND productId ='$productId' ";
-           $check = $this->db->select($cquery);
+           $query = "SELECT * FROM tbl_compare WHERE cmrId ='$cmrId' AND productId ='$productId' ";
+           $check = $this->db->select($query);
            if ($check) {
             $msg = "<span class='error'>Product Already Added.</span> ";
               return $msg;
@@ -302,5 +302,17 @@ include_once ($filepath.'/../helpers/Format.php');
            }
 
 
-}
+     public function getCompareProduct($cmrId)
+
+     {
+        
+        $query = "SELECT * FROM tbl_compare WHERE cmrId ='$cmrId' ";
+        $result=$this->db->select($query);
+        return $result;
+     }
+
+
+
+
+  }
    ?>
