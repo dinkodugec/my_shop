@@ -311,6 +311,54 @@ include_once ($filepath.'/../helpers/Format.php');
         return $result;
      }
 
+     public function delCompareData($cmrId)
+     {
+        $query = "DELETE FROM tbl_compare WHERE cmrId = '$cmrId' ";
+        $deldata = $this->db->delete($query);
+       
+     }
+
+     public function saveWishListData($id, $cmrId)
+     
+     {
+
+        $cquery = "SELECT * FROM tbl_wlist WHERE cmrId ='$cmrId' AND productId ='$id' ";
+         $check = $this->db->select($cquery);
+         if ($check) {
+          $msg = "<span class='error'>Product Already Added.</span> ";
+            return $msg;
+         }
+        
+        
+           $pquery = "SELECT * FROM tbl_product WHERE productId ='$id' ";
+          $result = $this->db->select($pquery)->fetch_assoc();
+           if ($result) {
+           
+             $productId     = $result['productId'];
+             $productName   = $result['productName'];
+             
+             $price         = $result['price'];
+             $image         = $result['image'];
+        
+              $query = "INSERT INTO tbl_wlist(cmrId, productId, productName, price, image) 
+                  VALUES ('$cmrId','$productId','$productName','$price','$image')";  
+        
+                  $inserted_row = $this->db->insert($query); 
+                  if ($inserted_row) {
+                $msg = "<span class='success'>Added To WishList Page.</span> ";
+              return $msg;
+              }else {
+                $msg = "<span class='error'>Not Added.</span> ";
+                   return $msg;
+                } 
+             }
+        
+        
+        
+     }
+        
+      
+
 
 
 

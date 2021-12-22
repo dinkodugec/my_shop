@@ -79,9 +79,9 @@
         <?php
        if (isset($_GET['cid'])) {
        	$cmrId =  Session::get("cmrId");
-       	$delDate = $ct->delCustomerCart();
+       	$deldata = $ct->delCustomerCart();
        	$delComp = $pd->delCompareData($cmrId);
-       Session::destroy();
+        Session::destroy();
        }
         ?>
 
@@ -139,17 +139,17 @@
 		<?php } 	?>
 
        <?php
-        $getPd = $pd->getCompareProduct($cmrId);
- 		if ($getPd) {  
- 		?>
-		<li><a href="compare.php">Compare</a> </li>
+	         $cmrId=Session::get("cmrId");       /*  if is product compare, then visible in header */
+            $getPd = $pd->getCompareProduct($cmrId);
+ 	    	if ($getPd) {  
+ 	    	?>
+		    <li><a href="compare.php">Compare</a> </li>
         <?php  }?>
 
             <?php
-                     
- 					$checkwlist = $pd->checkWlistData($cmrId);
- 					if ($checkwlist) {  
- 						?>
+              $checkwlist = $pd->checkWlistData($cmrId);
+ 			   if ($checkwlist) {  
+ 			 ?>
 		
 		<li><a href="wishlist.php">WishList</a> </li>
          <?php  }?>
