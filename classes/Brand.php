@@ -109,6 +109,53 @@ public function brandInsert($brandName)
 
 
 
+   public function getcopyById()
+	  {
+		$query = "SELECT * FROM tbl_copy  ";
+		$result = $this->db->select($query);
+		return $result;
+
+	  }
+
+
+  public function footerUpdate($copyRight)
+
+    {
+		$copyRight = $this->fm->validation($copyRight);
+		$copyRight =  mysqli_real_escape_string($this->db->link, $copyRight );
+			if (empty($copyRight)) {
+			$msg = "<span class='error'>Footer Field Must Not be empty.</span> ";
+			return $msg;
+   
+		}else {
+			   $query = "UPDATE tbl_copy
+			   SET
+			   copyright = '$copyRight'
+			   WHERE id = '1' ";
+			   $update_row  = $this->db->update($query);
+			   if ($update_row) {
+				   $msg = "<span class='success'>Footer Updated Successfully.</span> ";
+				   return $msg;
+			   }else {
+				   $msg = "<span class='error'>Footer Not Updated .</span> ";
+				   return $msg;
+			   }
+   
+		}
+	}
+
+	
+	public function getsocialById()
+	{
+		$query = "SELECT * FROM tbl_social";
+				 $result = $this->db->select($query);
+				 return $result;
+		
+    }
+	
+
+
+
 
 }
 
