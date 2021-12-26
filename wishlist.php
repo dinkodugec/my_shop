@@ -6,6 +6,12 @@
  }
 ?>
 
+<?php
+  if (isset($_GET['delwlistid'])) {
+  $productId = $_GET['delwlistid'];
+  $delWlist = $pd->delWlistData($cmrId,$productId);
+  }
+ ?>
 
 
 

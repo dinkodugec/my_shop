@@ -356,6 +356,7 @@ include_once ($filepath.'/../helpers/Format.php');
         
         
      }
+  
 
      public function checkWlistData($cmrId)
      {
@@ -366,9 +367,15 @@ include_once ($filepath.'/../helpers/Format.php');
 
      }
         
-      
+     public function delWlistData($cmrId,$productId) 
 
+      {
 
+        $query = "SELECT * FROM tbl_wlist WHERE cmrId ='$cmrId'  AND  WHERE productId ='$productId'";
+        $result=$this->db->select($query);
+        return $result;
+
+      }
 
 
   }
