@@ -15,7 +15,7 @@
     <div class="content">
     	<div class="cartoption">		
 			<div class="cartpage">
-			    	<h2>Compare </h2>
+			    	<h2>Wishlist </h2>
 
 					<table class="tblone">
 			     	<tr>
@@ -26,23 +26,22 @@
 					<th width="10%">Action</th>
 					</tr>
                      <?php
-					 $cmrId=Session::get("cmrId");
- 					$getPd = $pd->getCompareProduct($cmrId);
+				
+ 					$getPd = $pd->checkWlistData($cmrId);
  					if ($getPd) {
  						$i = 0;
- 						$sum = 0;
- 						$qty = 0;
+ 						
  						while ($result = $getPro->fetch_assoc()) {
  							 $i++;
  						         ?>
- 								<tr>
+ 							<tr>
 								<td><?php echo $i;  ?></td>
 								<td><?php echo $result['productName'];  ?></td>
 								<td><img src="admin/<?php echo $result['image']; ?>" alt=""/></td>
 								<td>$ <?php echo $result['price'];  ?></td>
-								<td></td>
-						       
-						    	</tr>
+								<td><a href="preview.php?proid=<?php echo $result['productId']; ?>">  View </a> 
+                                    || <a href="?delwlistid=<?php echo $result['productId']; ?>">  Remove </a> </td>
+						    </tr>
  								<?php } }   ?>
 						</table>
 								         

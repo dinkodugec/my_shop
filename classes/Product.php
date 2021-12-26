@@ -356,6 +356,15 @@ include_once ($filepath.'/../helpers/Format.php');
         
         
      }
+
+     public function checkWlistData($cmrId)
+     {
+
+        $query = "SELECT * FROM tbl_wlist WHERE cmrId ='$cmrId' ORDER BY id DESC";
+        $result=$this->db->select($query);
+        return $result;
+
+     }
         
       
 
