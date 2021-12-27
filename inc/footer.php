@@ -34,8 +34,8 @@
 				<div class="col_1_of_4 span_1_of_4">
 					<h4>Contact</h4>
 						<ul>
-							<li><span>support@easylearningbd.com</span></li>
-							<li><span>www.easylearningbd.com</span></li>
+							<li><span>dugecdinko@gmail.com</span></li>
+							
 						</ul>
 						<div class="social-icons">
 							<h4>Follow Us</h4>

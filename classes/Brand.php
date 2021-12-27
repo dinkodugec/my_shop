@@ -152,6 +152,41 @@ public function brandInsert($brandName)
 				 return $result;
 		
     }
+
+	public function socialUpdate($fb,$tw,$ln,$gp){
+		$fb = $this->fm->validation($fb);
+		$tw = $this->fm->validation($tw);
+		$ln = $this->fm->validation($ln);
+		$gp = $this->fm->validation($gp);
+   
+		$fb =  mysqli_real_escape_string($this->db->link, $fb );
+		$tw =  mysqli_real_escape_string($this->db->link, $tw );
+		$ln =  mysqli_real_escape_string($this->db->link, $ln );
+		$gp =  mysqli_real_escape_string($this->db->link, $gp );
+			if (empty($fb)) {
+			$msg = "<span class='error'>Scoial Field Must Not be empty.</span> ";
+			return $msg;
+   
+		}else {
+			   $query = "UPDATE tbl_social
+			   SET
+			   fb = '$fb',
+			   tw = '$tw',
+			   ln = '$ln',
+			   gp = '$gp'
+			   WHERE id = '1' ";
+			   $update_row  = $this->db->update($query);
+			   if ($update_row) {
+				   $msg = "<span class='success'>Social Updated Successfully.</span> ";
+				   return $msg;
+			   }else {
+				   $msg = "<span class='error'>Social Not Updated .</span> ";
+				   return $msg;
+			   }
+   
+		}
+   
+   }
 	
 
 
