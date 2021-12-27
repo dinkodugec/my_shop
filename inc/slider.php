@@ -99,9 +99,9 @@
 			<section class="slider">
 				  <div class="flexslider">
 					<ul class="slides">
-						<li><img src="images/1.jpg" alt=""/></li>
-						<li><img src="images/2.jpg" alt=""/></li>
-						<li><img src="images/3.jpg" alt=""/></li>
+						<li><img src="images/1.jpg" alt=""/></li>  <!-- slike se nalaze u shop/images/nazivslike.jpg -->
+						<li><img src="images/2.jpg" alt=""/></li>   <!--      i moramo ih prebaciti u file upload u admin -->
+						<li><img src="images/3.jpg" alt=""/></li>          <!--  i unda u bazi imamo image u koji stavljamo putanju slike -->
 						<li><img src="images/4.jpg" alt=""/></li>
 				    </ul>
 				  </div>

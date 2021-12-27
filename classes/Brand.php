@@ -153,7 +153,8 @@ public function brandInsert($brandName)
 		
     }
 
-	public function socialUpdate($fb,$tw,$ln,$gp){
+	public function socialUpdate($fb,$tw,$ln,$gp)
+	{
 		$fb = $this->fm->validation($fb);
 		$tw = $this->fm->validation($tw);
 		$ln = $this->fm->validation($ln);
@@ -187,6 +188,15 @@ public function brandInsert($brandName)
 		}
    
    }
+
+   
+   public function getAllimage()
+    {
+	    $query = "SELECT * FROM tbl_image";
+		 $result = $this->db->select($query);
+		 return $result;
+	
+	 }
 	
 
 
