@@ -1,17 +1,33 @@
 <?php include 'inc/header.php';?>
 <?php include 'inc/sidebar.php';?>
+<?php include '../classes/Brand.php';  ?>
+
+<?php 
+   $brand =  new Brand();
+    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit']) ) {
+              
+        $insertslider = $brand->sliderInsert($_POST, $_FILES);
+    }
+
+?>
 <div class="grid_10">
     <div class="box round first grid">
         <h2>Add New Slider</h2>
-    <div class="block">               
-         <form action="addslider.php" method="post" enctype="multipart/form-data">
+    <div class="block">     
+                   <?php
+                    if (isset($insertslider)) {
+                        echo $insertslider;
+                    }
+                   ?>
+          
+         <form action="addslider.php" method="post" enctype="multipart/form-data">  <!-- when work with pictures enctype -->
             <table class="form">     
                 <tr>
                     <td>
                         <label>Title</label>
                     </td>
                     <td>
-                        <input type="text" name="title" placeholder="Enter Slider Title..." class="medium" />
+                        <input type="text" name="tittle" placeholder="Enter Slider Title..." class="medium" />
                     </td>
                 </tr>           
     

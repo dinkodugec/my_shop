@@ -197,6 +197,43 @@ public function brandInsert($brandName)
 		 return $result;
 	
 	 }
+
+
+	 public function sliderInsert($data, $file)
+	 {
+		$tittle    =  mysqli_real_escape_string($this->db->link, $data['tittle'] );
+	   
+	  
+		   $permited = array('jpg','png','jpeg','gif');
+		   $file_name = $file['image']['name'];
+		   $file_size = $file['image']['size'];
+		   $file_temp = $file['image']['tmp_name'];
+	  
+		   $div = explode('.', $file_name);
+		   $file_ext = strtolower(end($div));
+		   $unique_image = substr(md5(time()), 0, 10).'.'.$file_ext;
+		   $uploaded_image = "upload/".$unique_image;
+		   if ($tittle == "" ) {
+			  $msg = "<span class='error'>Field Must Not be empty .</span> ";
+					  return $msg;
+		   }else{
+				move_uploaded_file($file_temp, $uploaded_image);
+				$query = "INSERT INTO tbl_image(title, image) 
+				VALUES ('$tittle','$uploaded_image')";  
+	  
+				$inserted_row = $this->db->insert($query);
+				if ($inserted_row) {
+					  $msg = "<span class='success'>Slider Inserted Successfully.</span> ";
+					  return $msg;
+				  }else {
+					  $msg = "<span class='error'>Slider Not Inserted .</span> ";
+					  return $msg;
+				  } 
+		   }
+	  
+	   }
+	  
+	  
 	
 
 

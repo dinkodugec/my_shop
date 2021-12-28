@@ -99,10 +99,14 @@
 			<section class="slider">
 				  <div class="flexslider">
 					<ul class="slides">
-						<li><img src="images/1.jpg" alt=""/></li>  <!-- slike se nalaze u shop/images/nazivslike.jpg -->
-						<li><img src="images/2.jpg" alt=""/></li>   <!--      i moramo ih prebaciti u file upload u admin -->
-						<li><img src="images/3.jpg" alt=""/></li>          <!--  i unda u bazi imamo image u koji stavljamo putanju slike -->
-						<li><img src="images/4.jpg" alt=""/></li>
+						<<?php 
+                       $brand =  new Brand();
+                       $getIm = $brand->getAllimage();   /*  <!-- slike se nalaze u shop/images/nazivslike.jpg --> */
+                       if ($getIm) {                                  /*  <!--      i moramo ih prebaciti u file upload u admin --> */
+                       while ($result = $getIm->fetch_assoc() ) {       /*  <!--  i unda u bazi imamo image u koji stavljamo putanju slike --> */
+                       ?>
+					    <li><img src="admin/<?php echo $result['image']; ?>" alt=""/></li>
+					   <?php  }  } ?>	
 				    </ul>
 				  </div>
 	      </section>
@@ -110,3 +114,5 @@
 	    </div>
 	  <div class="clear"></div>
   </div>	
+
+ 
